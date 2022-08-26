@@ -38,5 +38,7 @@ app.get('/journal-entries/:id', (req, res) => {
 
 //Comments section
 
+app.get('/comments', (req, res) => res.send(comments));
+
 module.exports = app
 
