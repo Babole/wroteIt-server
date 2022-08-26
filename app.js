@@ -19,7 +19,24 @@ app.use(cors());
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
+//Journal-Entry section
+
 app.get('/journal-entries', (req, res) => res.send(journalEntries));
+
+app.get('/journal-entries/:id', (req, res) => {
+    try {
+        const entryId = parseInt(req.params.id) 
+        const selectedEntry = journalEntries.find(entry => entry.id === entryId)
+        if(!selectedEntry){
+            throw new Error('That entry does not exist!')
+        }
+        res.send(selectedEntry)
+    } catch (err) {
+        res.status(404).send({ message: err.message })
+    }
+})
+
+//Comments section
 
 module.exports = app
 
