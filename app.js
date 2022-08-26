@@ -40,5 +40,18 @@ app.get('/journal-entries/:id', (req, res) => {
 
 app.get('/comments', (req, res) => res.send(comments));
 
+app.get('/comments/:id', (req, res) => {
+    try {
+        const commentId = parseInt(req.params.id) 
+        const selectedComment = comments.find(comment => comment.id === commentId)
+        if(!selectedComment){
+            throw new Error('That comment does not exist!')
+        }
+        res.send(selectedComment)
+    } catch (err) {
+        res.status(404).send({ message: err.message })
+    }
+})
+
 module.exports = app
 
