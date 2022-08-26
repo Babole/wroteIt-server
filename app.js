@@ -41,7 +41,7 @@ app.post('/journal-entries', (req, res) => {
     const newTitle = req.body.title
     const newContent = req.body.content
     const newId = journalEntries[journalEntries.length - 1].id + 1
-    const newEntry = { id:newId, title: newTitle, content: newContent, comments: [] }
+    const newEntry = { id: newId, title: newTitle, content: newContent, comments: [] }
 
     journalEntries.push(newEntry)
     res.status(201).send(newEntry)
@@ -62,6 +62,15 @@ app.get('/comments/:id', (req, res) => {
     } catch (err) {
         res.status(404).send({ message: err.message })
     }
+})
+
+app.post('/comments', (req, res) => {
+    const newContent = req.body.content
+    const newId = comments[comments.length - 1].id + 1
+    const newComment = { id: newId, content: newContent }
+
+    comments.push(newComment)
+    res.status(201).send(newComment)
 })
 
 module.exports = app
