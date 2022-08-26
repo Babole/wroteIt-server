@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">67.39% </span>
+                <span class="strong">93.47% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>31/46</span>
+                <span class='fraction'>43/46</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">77.77% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>7/9</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">63.41% </span>
+                <span class="strong">92.68% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>26/41</span>
+                <span class='fraction'>38/41</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -181,13 +181,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -208,13 +208,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -258,14 +258,14 @@ app.get('/journal-entries/:id', (req, res) =&gt; {
     }
 })
 &nbsp;
-app.post('/journal-entries', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-    const newTitle = <span class="cstat-no" title="statement not covered" >req.body.title</span>
-    const newContent = <span class="cstat-no" title="statement not covered" >req.body.content</span>
-    const newId = <span class="cstat-no" title="statement not covered" >journalEntries[journalEntries.length - 1].id + 1</span>
-    const newEntry = <span class="cstat-no" title="statement not covered" >{ id: newId, title: newTitle, content: newContent }</span>
+app.post('/journal-entries', (req, res) =&gt; {
+    const newTitle = req.body.title
+    const newContent = req.body.content
+    const newId = journalEntries[journalEntries.length - 1].id + 1
+    const newEntry = { id: newId, title: newTitle, content: newContent }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    journalEntries.push(newEntry)</span>
-<span class="cstat-no" title="statement not covered" >    res.status(201).send(newEntry)</span>
+    journalEntries.push(newEntry)
+    res.status(201).send(newEntry)
 })
 &nbsp;
 //Comments section
@@ -285,14 +285,14 @@ app.get('/comments/:id', (req, res) =&gt; {
     }
 })
 &nbsp;
-app.post('/comments', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-    const newContent = <span class="cstat-no" title="statement not covered" >req.body.content</span>
-    const newEntryId = <span class="cstat-no" title="statement not covered" >req.body.entryId</span>
-    const newId = <span class="cstat-no" title="statement not covered" >comments[comments.length - 1].id + 1</span>
-    const newComment = <span class="cstat-no" title="statement not covered" >{ id: newId, content: newContent, entryId: newEntryId }</span>
+app.post('/comments', (req, res) =&gt; {
+    const newContent = req.body.content
+    const newEntryId = req.body.entryId
+    const newId = comments[comments.length - 1].id + 1
+    const newComment = { id: newId, content: newContent, entryId: newEntryId }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    comments.push(newComment)</span>
-<span class="cstat-no" title="statement not covered" >    res.status(201).send(newComment)</span>
+    comments.push(newComment)
+    res.status(201).send(newComment)
 })
 &nbsp;
 module.exports = app
@@ -304,7 +304,7 @@ module.exports = app
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-08-26T13:58:46.535Z
+                at 2022-08-26T14:14:25.020Z
             </div>
         <script src="prettify.js"></script>
         <script>

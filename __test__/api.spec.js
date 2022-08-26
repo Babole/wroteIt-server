@@ -45,4 +45,32 @@ describe('api server', () => {
             .expect(404)
             .expect({ message: 'That comment does not exist!' }, done)
     })
-})
+
+    test('responds to post /journal-entries with status 201', (done) => {
+        const testData = {
+            title: 'Test title',
+            content: 'Test content'
+        }
+
+        request(api)
+            .post('/journal-entries')
+            .send(testData)
+            .set('Accept', 'application/json')
+            .expect(201)
+            .expect({ id: 3, ...testData}, done)
+    })
+
+    test('responds to post /comments with status 201', (done) => {
+        const testData = {
+            content: 'Test content',
+            entryId: 1
+        }
+
+        request(api)
+            .post('/comments')
+            .send(testData)
+            .set('Accept', 'application/json')
+            .expect(201)
+            .expect({ id: 4, ...testData}, done)
+    })
+}) 
