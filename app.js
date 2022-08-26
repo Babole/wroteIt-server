@@ -16,6 +16,7 @@ const comments = [
 ]
 
 app.use(cors());
+app.use(express.json());
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
@@ -34,6 +35,16 @@ app.get('/journal-entries/:id', (req, res) => {
     } catch (err) {
         res.status(404).send({ message: err.message })
     }
+})
+
+app.post('/journal-entries', (req, res) => {
+    const newTitle = req.body.title
+    const newContent = req.body.content
+    const newId = journalEntries[journalEntries.length - 1].id + 1
+    const newEntry = { id:newId, title: newTitle, content: newContent, comments: [] }
+
+    journalEntries.push(newEntry)
+    res.status(201).send(newEntry)
 })
 
 //Comments section
