@@ -9,9 +9,9 @@ const journalEntries = [
 ]
 
 const comments = [
-    {id: 1, content: "This comment is for 1", entryId: 1, emoji1: 2, emoji2: 1, emoji3: 0},
-    {id: 2, content: "This comment is for 2", entryId: 2, emoji1: 2, emoji2: 1, emoji3: 0},
-    {id: 3, content: "This comment is for 1", entryId: 1, emoji1: 2, emoji2: 1, emoji3: 0},
+    {id: 1, content: "This comment is for 1", entryId: 1, cEmoji1: 2, cEmoji2: 1},
+    {id: 2, content: "This comment is for 2", entryId: 2, cEmoji1: 2, cEmoji2: 1},
+    {id: 3, content: "This comment is for 1", entryId: 1, cEmoji1: 2, cEmoji2: 1}
 
 ]
 
@@ -47,6 +47,22 @@ app.post('/journal-entries', (req, res) => {
     res.status(201).send(newEntry)
 })
 
+app.patch('/journal-entries/:id', (req, res) => {
+    try {
+        const entryId = parseInt(req.params.id) 
+        const selectedEntry = journalEntries.find(entry => entry.id === entryId)
+        const changes = req.body
+        if(!selectedEntry){
+            throw new Error('That entry does not exist!')
+        } else {
+            Object.assign(selectedEntry, changes)
+            res.status(200).json(selectedEntry)
+        }
+    } catch (err) {
+        res.status(404).send({ message: err.message })
+    }
+})
+
 //Comments section
 
 app.get('/comments', (req, res) => res.send(comments));
@@ -68,10 +84,26 @@ app.post('/comments', (req, res) => {
     const newContent = req.body.content
     const newEntryId = req.body.entryId
     const newId = comments[comments.length - 1].id + 1
-    const newComment = { id: newId, content: newContent, entryId: newEntryId, emoji1: 0, emoji2: 0, emoji3: 0 }
+    const newComment = { id: newId, content: newContent, entryId: newEntryId, cEmoji1: 0, cEmoji2: 0 }
 
     comments.push(newComment)
     res.status(201).send(newComment)
+})
+
+app.patch('/comments/:id', (req, res) => {
+    try {
+        const commentId = parseInt(req.params.id) 
+        const selectedComment = comments.find(comment => comment.id === commentId)
+        const changes = req.body
+        if(!selectedComment){
+            throw new Error('That comment does not exist!')
+        } else {
+            Object.assign(selectedComment, changes)
+            res.status(200).json(selectedComment)
+        }
+    } catch (err) {
+        res.status(404).send({ message: err.message })
+    }
 })
 
 module.exports = app
