@@ -3,15 +3,15 @@ const app = express()
 const cors = require('cors');
 
 const journalEntries = [
-    {id: 1, title: "Test entry title 1", content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error ea nostrum culpa earum quaerat quo? Reiciendis ratione aliquam eius, facere veritatis nulla architecto? Placeat quae iure rem at minima rerum atque inventore sint pariatur praesentium nam, corrupti, ratione asperiores magni. Id quia, illo commodi cum adipisci qui placeat? Ullam sed rerum enim voluptatibus veniam. Temporibus, perspiciatis fugit, labore nostrum, facere reiciendis doloremque in porro asperiores voluptates dicta voluptate possimus. Ipsa quas eum aut ipsum expedita nam facere. Consequatur dicta ab asperiores assumenda non ratione fugit ipsam totam vel. Autem velit est tempora qui amet ipsum doloremque magnam quas placeat aut."},
+    {id: 1, title: "Test entry title 1", content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error ea nostrum culpa earum quaerat quo? Reiciendis ratione aliquam eius, facere veritatis nulla architecto? Placeat quae iure rem at minima rerum atque inventore sint pariatur praesentium nam, corrupti, ratione asperiores magni. Id quia, illo commodi cum adipisci qui placeat? Ullam sed rerum enim voluptatibus veniam. Temporibus, perspiciatis fugit, labore nostrum, facere reiciendis doloremque in porro asperiores voluptates dicta voluptate possimus. Ipsa quas eum aut ipsum expedita nam facere. Consequatur dicta ab asperiores assumenda non ratione fugit ipsam totam vel. Autem velit est tempora qui amet ipsum doloremque magnam quas placeat aut.", emoji1: 2, emoji2: 1, emoji3: 0},
 
-    {id: 2, title: "Test entry title 2", content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error ea nostrum culpa earum quaerat quo? Reiciendis ratione aliquam eius, facere veritatis nulla architecto? Placeat quae iure rem at minima rerum atque inventore sint pariatur praesentium nam, corrupti, ratione asperiores magni. Id quia, illo commodi cum adipisci qui placeat? Ullam sed rerum enim voluptatibus veniam. Temporibus, perspiciatis fugit, labore nostrum, facere reiciendis doloremque in porro asperiores voluptates dicta voluptate possimus. Ipsa quas eum aut ipsum expedita nam facere. Consequatur dicta ab asperiores assumenda non ratione fugit ipsam totam vel. Autem velit est tempora qui amet ipsum doloremque magnam quas placeat aut."}
+    {id: 2, title: "Test entry title 2", content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error ea nostrum culpa earum quaerat quo? Reiciendis ratione aliquam eius, facere veritatis nulla architecto? Placeat quae iure rem at minima rerum atque inventore sint pariatur praesentium nam, corrupti, ratione asperiores magni. Id quia, illo commodi cum adipisci qui placeat? Ullam sed rerum enim voluptatibus veniam. Temporibus, perspiciatis fugit, labore nostrum, facere reiciendis doloremque in porro asperiores voluptates dicta voluptate possimus. Ipsa quas eum aut ipsum expedita nam facere. Consequatur dicta ab asperiores assumenda non ratione fugit ipsam totam vel. Autem velit est tempora qui amet ipsum doloremque magnam quas placeat aut.", emoji1: 2, emoji2: 1, emoji3: 0}
 ]
 
 const comments = [
-    {id: 1, content: "This comment is for 1", entryId: 1},
-    {id: 2, content: "This comment is for 2", entryId: 2},
-    {id: 3, content: "This comment is for 1", entryId: 1},
+    {id: 1, content: "This comment is for 1", entryId: 1, emoji1: 2, emoji2: 1, emoji3: 0},
+    {id: 2, content: "This comment is for 2", entryId: 2, emoji1: 2, emoji2: 1, emoji3: 0},
+    {id: 3, content: "This comment is for 1", entryId: 1, emoji1: 2, emoji2: 1, emoji3: 0},
 
 ]
 
@@ -41,7 +41,7 @@ app.post('/journal-entries', (req, res) => {
     const newTitle = req.body.title
     const newContent = req.body.content
     const newId = journalEntries[journalEntries.length - 1].id + 1
-    const newEntry = { id: newId, title: newTitle, content: newContent }
+    const newEntry = { id: newId, title: newTitle, content: newContent, emoji1: 0, emoji2: 0, emoji3: 0 }
 
     journalEntries.push(newEntry)
     res.status(201).send(newEntry)
@@ -68,7 +68,7 @@ app.post('/comments', (req, res) => {
     const newContent = req.body.content
     const newEntryId = req.body.entryId
     const newId = comments[comments.length - 1].id + 1
-    const newComment = { id: newId, content: newContent, entryId: newEntryId }
+    const newComment = { id: newId, content: newContent, entryId: newEntryId, emoji1: 0, emoji2: 0, emoji3: 0 }
 
     comments.push(newComment)
     res.status(201).send(newComment)
