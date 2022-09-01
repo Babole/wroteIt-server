@@ -3,9 +3,9 @@ const app = express()
 const cors = require('cors');
 
 const journalEntries = [
-    {id: 1, title: "Test entry title 1", content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error ea nostrum culpa earum quaerat quo? Reiciendis ratione aliquam eius, facere veritatis nulla architecto? Placeat quae iure rem at minima rerum atque inventore sint pariatur praesentium nam, corrupti, ratione asperiores magni. Id quia, illo commodi cum adipisci qui placeat? Ullam sed rerum enim voluptatibus veniam. Temporibus, perspiciatis fugit, labore nostrum, facere reiciendis doloremque in porro asperiores voluptates dicta voluptate possimus. Ipsa quas eum aut ipsum expedita nam facere. Consequatur dicta ab asperiores assumenda non ratione fugit ipsam totam vel. Autem velit est tempora qui amet ipsum doloremque magnam quas placeat aut.", emoji1: 2, emoji2: 1, emoji3: 0},
+    {id: 1, title: "Test entry title 1", content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error ea nostrum culpa earum quaerat quo? Reiciendis ratione aliquam eius, facere veritatis nulla architecto? Placeat quae iure rem at minima rerum atque inventore sint pariatur praesentium nam, corrupti, ratione asperiores magni. Id quia, illo commodi cum adipisci qui placeat? Ullam sed rerum enim voluptatibus veniam. Temporibus, perspiciatis fugit, labore nostrum, facere reiciendis doloremque in porro asperiores voluptates dicta voluptate possimus. Ipsa quas eum aut ipsum expedita nam facere. Consequatur dicta ab asperiores assumenda non ratione fugit ipsam totam vel. Autem velit est tempora qui amet ipsum doloremque magnam quas placeat aut.", emoji1: 2, emoji2: 1, emoji3: 0, gif: "https://media4.giphy.com/media/5i7umUqAOYYEw/giphy.gif?cid=99c11231p9vk9zkfrvir0s93ffenz4h4sedt55x9yewgxwa9&rid=giphy.gif&ct=g" },
 
-    {id: 2, title: "Test entry title 2", content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error ea nostrum culpa earum quaerat quo? Reiciendis ratione aliquam eius, facere veritatis nulla architecto? Placeat quae iure rem at minima rerum atque inventore sint pariatur praesentium nam, corrupti, ratione asperiores magni. Id quia, illo commodi cum adipisci qui placeat? Ullam sed rerum enim voluptatibus veniam. Temporibus, perspiciatis fugit, labore nostrum, facere reiciendis doloremque in porro asperiores voluptates dicta voluptate possimus. Ipsa quas eum aut ipsum expedita nam facere. Consequatur dicta ab asperiores assumenda non ratione fugit ipsam totam vel. Autem velit est tempora qui amet ipsum doloremque magnam quas placeat aut.", emoji1: 2, emoji2: 1, emoji3: 0}
+    {id: 2, title: "Test entry title 2", content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error ea nostrum culpa earum quaerat quo? Reiciendis ratione aliquam eius, facere veritatis nulla architecto? Placeat quae iure rem at minima rerum atque inventore sint pariatur praesentium nam, corrupti, ratione asperiores magni. Id quia, illo commodi cum adipisci qui placeat? Ullam sed rerum enim voluptatibus veniam. Temporibus, perspiciatis fugit, labore nostrum, facere reiciendis doloremque in porro asperiores voluptates dicta voluptate possimus. Ipsa quas eum aut ipsum expedita nam facere. Consequatur dicta ab asperiores assumenda non ratione fugit ipsam totam vel. Autem velit est tempora qui amet ipsum doloremque magnam quas placeat aut.", emoji1: 2, emoji2: 1, emoji3: 0, gif: "https://media4.giphy.com/media/oDK8A6xUNjD2M/giphy.gif?cid=99c11231qbhrq7fjpkqbokyahtyknpo17pso5zq7jmurk224&rid=giphy.gif&ct=g" }
 ]
 
 const comments = [
@@ -41,7 +41,8 @@ app.post('/journal-entries', (req, res) => {
     const newTitle = req.body.title
     const newContent = req.body.content
     const newId = journalEntries[journalEntries.length - 1].id + 1
-    const newEntry = { id: newId, title: newTitle, content: newContent, emoji1: 0, emoji2: 0, emoji3: 0 }
+    const newGif = req.body.gif
+    const newEntry = { id: newId, title: newTitle, content: newContent, emoji1: 0, emoji2: 0, emoji3: 0, gif: newGif }
 
     journalEntries.push(newEntry)
     res.status(201).send(newEntry)
