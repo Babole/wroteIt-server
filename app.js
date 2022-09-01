@@ -72,9 +72,26 @@ app.get('/comments/:id', (req, res) => {
         const commentId = parseInt(req.params.id) 
         const selectedComment = comments.find(comment => comment.id === commentId)
         if(!selectedComment){
+            console.log(typeof selectedComment)
             throw new Error('That comment does not exist!')
         }
+        console.log(typeof selectedComment)
         res.send(selectedComment)
+    } catch (err) {
+        res.status(404).send({ message: err.message })
+    }
+})
+
+app.get('/comments/eId/:id', (req, res) => {
+    try {
+        const commentEId = parseInt(req.params.id) 
+        const selectedComments = comments.filter(comment => comment.entryId === commentEId)
+        if(Object.keys(selectedComments).length === 0){
+            console.log('in here')
+            throw new Error('This entry has no comments!')
+        }
+        console.log(typeof selectedComments)
+        res.send(selectedComments)
     } catch (err) {
         res.status(404).send({ message: err.message })
     }
