@@ -11,7 +11,19 @@ const journalEntries = [
 ]
 
 const comments = [
-    {id: 1, content: "This an example comment", entryId: 0, cEmoji1: 2, cEmoji2: 1}
+    {id: 1, content: "well done congrats!", entryId: 1, cEmoji1: 0, cEmoji2: 0},
+    {id: 2, content: "Well done mate! You should consider going into software development!", entryId: 1, cEmoji1: 0, cEmoji2: 0},
+    {id: 3, content: "A whole graduate?! That's lit big up to you!", entryId: 1, cEmoji1: 0, cEmoji2: 0},
+    {id: 4, content: "yes you are the a******, shame", entryId: 2, cEmoji1: 0, cEmoji2: 0},
+    {id: 5, content: "definitely TA. Is this not obvious? I don't know about you but me personally I could never take that betrayal. Absolutely horrid behaviour...", entryId: 2, cEmoji1: 0, cEmoji2: 0},
+    {id: 6, content: "nah guys , it was an honest mistake. can't you just start over like its not that deep", entryId: 2, cEmoji1: 0, cEmoji2: 0},
+    {id: 7, content: "booooooooo", entryId: 2, cEmoji1: 0, cEmoji2: 0},
+    {id: 8, content: "i've come back to comment again. shame on you sir", entryId: 2, cEmoji1: 0, cEmoji2: 0},
+    {id: 9, content: "3 years seems a bit much...", entryId: 2, cEmoji1: 0, cEmoji2: 0},
+    {id: 10, content: "yeah Bojack is great I really enjoyed it.", entryId: 3, cEmoji1: 0, cEmoji2: 0},
+    {id: 11, content: "hojack borseman", entryId: 3, cEmoji1: 0, cEmoji2: 0},
+    {id: 12, content: "the show is about a horse??? yeah count me out thanks", entryId: 3, cEmoji1: 0, cEmoji2: 0},
+    {id: 13, content: "What disease are horses most scared of getting? Hay fever", entryId: 3, cEmoji1: 0, cEmoji2: 0},
 ]
 
 app.use(cors());
@@ -75,7 +87,6 @@ app.get('/comments/:id', (req, res) => {
             console.log(typeof selectedComment)
             throw new Error('That comment does not exist!')
         }
-        console.log(typeof selectedComment)
         res.send(selectedComment)
     } catch (err) {
         res.status(404).send({ message: err.message })

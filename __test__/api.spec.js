@@ -39,6 +39,12 @@ describe('api server', () => {
             .expect(200, done)
     })
 
+    test('it responds to get /comments/eId/1 with status 200', (done) => {
+        request(api)
+            .get('/comments/eId/1')
+            .expect(200, done)
+    })
+
     test('responds to a unknown comment id with a 404', (done) => {
         request(api)
             .get('/comments/42')
@@ -49,7 +55,7 @@ describe('api server', () => {
     test('responds to post /journal-entries with status 201', (done) => {
         const testData = {
             title: 'Test title',
-            content: 'Test content'
+            content: 'Test content',
         }
 
         request(api)
@@ -57,7 +63,7 @@ describe('api server', () => {
             .send(testData)
             .set('Accept', 'application/json')
             .expect(201)
-            .expect({ id: 3, ...testData, emoji1: 0, emoji2: 0, emoji3: 0 }, done)
+            .expect({ id: 4, ...testData, emoji1: 0, emoji2: 0, emoji3: 0 }, done)
     })
 
     test('responds to post /comments with status 201', (done) => {
@@ -71,7 +77,7 @@ describe('api server', () => {
             .send(testData)
             .set('Accept', 'application/json')
             .expect(201)
-            .expect({ id: 4, ...testData, cEmoji1: 0, cEmoji2: 0 }, done)
+            .expect({ id: 14, ...testData, cEmoji1: 0, cEmoji2: 0 }, done)
     })
 
     test('responds to patch /joirnal-entries/1 with status 200', (done) => {
@@ -86,7 +92,7 @@ describe('api server', () => {
             .send(testChange)
             .set('Accept', 'application/json')
             .expect(200)
-            .expect({ id: 1, title: "Test entry title 1", content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error ea nostrum culpa earum quaerat quo? Reiciendis ratione aliquam eius, facere veritatis nulla architecto? Placeat quae iure rem at minima rerum atque inventore sint pariatur praesentium nam, corrupti, ratione asperiores magni. Id quia, illo commodi cum adipisci qui placeat? Ullam sed rerum enim voluptatibus veniam. Temporibus, perspiciatis fugit, labore nostrum, facere reiciendis doloremque in porro asperiores voluptates dicta voluptate possimus. Ipsa quas eum aut ipsum expedita nam facere. Consequatur dicta ab asperiores assumenda non ratione fugit ipsam totam vel. Autem velit est tempora qui amet ipsum doloremque magnam quas placeat aut.", ...testChange }, done)
+            .expect({ id: 1, title: "My graduation", content: "Today was my graduation ceremony. I've graduated with a chemistry degree and i feel amazing. 3 years of hard work, staying up late revising, 8 hour sessions in the lab i'll miss it but im onto my next chapter.", ...testChange, gif: 'https://media2.giphy.com/media/l41lSXyUa25Oah9Ek/giphy.gif?cid=790b7611cf287f515d2ccf43e004cc22c699be8d63a2e029&rid=giphy.gif&ct=g' }, done)
     })
 
     test('responds to patch /comments/1 with status 200', (done) => {
@@ -100,6 +106,6 @@ describe('api server', () => {
             .send(testChange)
             .set('Accept', 'application/json')
             .expect(200)
-            .expect({ id: 1, content: "This comment is for 1", entryId: 1, ...testChange }, done)
+            .expect({ id: 1, content: "well done congrats!", entryId: 1, ...testChange }, done)
     })
 }) 
