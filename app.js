@@ -3,16 +3,15 @@ const app = express()
 const cors = require('cors');
 
 const journalEntries = [
-    {id: 1, title: "Test entry title 1", content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error ea nostrum culpa earum quaerat quo? Reiciendis ratione aliquam eius, facere veritatis nulla architecto? Placeat quae iure rem at minima rerum atque inventore sint pariatur praesentium nam, corrupti, ratione asperiores magni. Id quia, illo commodi cum adipisci qui placeat? Ullam sed rerum enim voluptatibus veniam. Temporibus, perspiciatis fugit, labore nostrum, facere reiciendis doloremque in porro asperiores voluptates dicta voluptate possimus. Ipsa quas eum aut ipsum expedita nam facere. Consequatur dicta ab asperiores assumenda non ratione fugit ipsam totam vel. Autem velit est tempora qui amet ipsum doloremque magnam quas placeat aut.", emoji1: 2, emoji2: 1, emoji3: 0, gif: "https://media4.giphy.com/media/5i7umUqAOYYEw/giphy.gif?cid=99c11231p9vk9zkfrvir0s93ffenz4h4sedt55x9yewgxwa9&rid=giphy.gif&ct=g" },
+    {id: 1, title: "My graduation", content: "Today was my graduation ceremony. I've graduated with a chemistry degree and i feel amazing. 3 years of hard work, staying up late revising, 8 hour sessions in the lab i'll miss it but im onto my next chapter.", emoji1: 0, emoji2: 0, emoji3: 0, gif: "https://media2.giphy.com/media/l41lSXyUa25Oah9Ek/giphy.gif?cid=790b7611cf287f515d2ccf43e004cc22c699be8d63a2e029&rid=giphy.gif&ct=g" },
 
-    {id: 2, title: "Test entry title 2", content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error ea nostrum culpa earum quaerat quo? Reiciendis ratione aliquam eius, facere veritatis nulla architecto? Placeat quae iure rem at minima rerum atque inventore sint pariatur praesentium nam, corrupti, ratione asperiores magni. Id quia, illo commodi cum adipisci qui placeat? Ullam sed rerum enim voluptatibus veniam. Temporibus, perspiciatis fugit, labore nostrum, facere reiciendis doloremque in porro asperiores voluptates dicta voluptate possimus. Ipsa quas eum aut ipsum expedita nam facere. Consequatur dicta ab asperiores assumenda non ratione fugit ipsam totam vel. Autem velit est tempora qui amet ipsum doloremque magnam quas placeat aut.", emoji1: 2, emoji2: 1, emoji3: 0, gif: "https://media4.giphy.com/media/oDK8A6xUNjD2M/giphy.gif?cid=99c11231qbhrq7fjpkqbokyahtyknpo17pso5zq7jmurk224&rid=giphy.gif&ct=g" }
+    {id: 2, title: "I broke my friends code - AITA?", content: "We were designing a website that allows you to post anonymous blog entries. My friend worked on a feature to add emoji reactions, whilst I worked on testing. I moved one line of code, and now the whole page shows nothing. I understand this is my fault, but he hasnt spoken to me for 3 years now and I think this is an overreaction, as we could have just moved it back to make it work.  AITA?", emoji1: 0, emoji2: 0, emoji3: 0, gif: "https://media4.giphy.com/media/DoASNkgBr1iii4MkSq/giphy.gif?cid=790b7611da97d015506b2c38f5da3f078e0ad38d69ec6354&rid=giphy.gif&ct=g" },
+
+    {id: 3, title: "I finished watching bojack horseman", content: "A friend recommended the show on netflix, and i am so sad that it is over!I've seen all of BoJack Horseman. For those that don't know, it is an animated comedy show on netflix about a horse, who tries to regain popularity in his life after running a successful career in his 70s.It's unstoppable; the latest season may be the best yet, and that's after oodles of human/animal behaviour at its peak. Sure, it's larger than life, riddled with laffs, too, but at the core there's something that I just haven't found with other series, and it makes me cry, scream-laugh, and everything in-between.", emoji1: 0, emoji2: 0, emoji3: 0, gif: "https://media4.giphy.com/media/uVz7iwTMSDR5e/giphy.gif?cid=99c11231typ1p4uydty34rrq8st5flfwa816erthbnvjhc29&rid=giphy.gif&ct=g" }
 ]
 
 const comments = [
-    {id: 1, content: "This comment is for 1", entryId: 1, cEmoji1: 2, cEmoji2: 1},
-    {id: 2, content: "This comment is for 2", entryId: 2, cEmoji1: 2, cEmoji2: 1},
-    {id: 3, content: "This comment is for 1", entryId: 1, cEmoji1: 2, cEmoji2: 1}
-
+    // {id: 1, content: "This an example comment", entryId: 1, cEmoji1: 2, cEmoji2: 1}
 ]
 
 app.use(cors());
