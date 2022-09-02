@@ -11,7 +11,7 @@ const journalEntries = [
 ]
 
 const comments = [
-    // {id: 1, content: "This an example comment", entryId: 1, cEmoji1: 2, cEmoji2: 1}
+    {id: 1, content: "This an example comment", entryId: 0, cEmoji1: 2, cEmoji2: 1}
 ]
 
 app.use(cors());
